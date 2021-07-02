@@ -1,4 +1,5 @@
 
+This repo is a clone of [React-madboiler](https://github.com/maddevsio/react-madboiler)
 
 # Technology stack
 * [React](https://ru.reactjs.org/)
