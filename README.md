@@ -1,5 +1,5 @@
 
-This repo is a clone of [React-madboiler](https://github.com/maddevsio/react-madboiler)
+This repo is a clone of [React-madboiler](https://github.com/maddevsio/react-madboiler) but without testing libraries.
 
 # Technology stack
 * [React](https://ru.reactjs.org/)
@@ -54,6 +54,7 @@ The application is available on [http://localhost:3000](http://localhost:3000)
 │   ├── assets
 │   │   ├── images
 │   │   └── fonts
+│   │   └── icons
 │   ├── components
 │   │   └── [ComponentName]
 │   │   │   └── index.js
