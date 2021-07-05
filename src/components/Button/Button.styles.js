@@ -1,3 +1,4 @@
+import { lighten, cssVar } from 'polished';
 import styled from 'styled-components/macro';
 
 export const StyledButton = styled.button`
@@ -11,6 +12,6 @@ export const StyledButton = styled.button`
   color: var(--white);
   border-radius: 5px;
   &:hover {
-    opacity: 0.8;
+    background: ${lighten(0.2, cssVar('--light-blue'))};
   }
 `;
