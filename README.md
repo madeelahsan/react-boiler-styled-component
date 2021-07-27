@@ -1,4 +1,6 @@
 
+This repo is a clone of [React-madboiler](https://github.com/maddevsio/react-madboiler) but without testing libraries.
+
 # Technology stack
 * [React](https://ru.reactjs.org/)
 * [React-router-dom](https://reactrouter.com/web/guides/quick-start)
