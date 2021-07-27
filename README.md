@@ -1,5 +1,4 @@
 
-
 # Technology stack
 * [React](https://ru.reactjs.org/)
 * [React-router-dom](https://reactrouter.com/web/guides/quick-start)
@@ -53,6 +52,7 @@ The application is available on [http://localhost:3000](http://localhost:3000)
 │   ├── assets
 │   │   ├── images
 │   │   └── fonts
+│   │   └── icons
 │   ├── components
 │   │   └── [ComponentName]
 │   │   │   └── index.js

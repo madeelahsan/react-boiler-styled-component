@@ -37,7 +37,7 @@
 	"Boiler Style": {
 		"prefix": "styledcomp",
 		"body": [
-			"import styled from 'styled-components';",
+			"import styled from 'styled-components/macro';",
 			"",
 			"export const ${1:Wrapper} = styled.div`${2}`;"
 		],

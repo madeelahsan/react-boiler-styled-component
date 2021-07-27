@@ -9,7 +9,7 @@ export default function MainPage() {
       <span>
         Go to{' '}
         <Link to="/demo" css="color: var(--light-blue);">
-          Demo <i className="icon-eye-hidden" />
+          Demo <i className="icon-chevron-right" />
         </Link>
       </span>
     </>
