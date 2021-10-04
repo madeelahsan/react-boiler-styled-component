@@ -39,13 +39,7 @@ function Pagination(props) {
   return (
     <PaginationList>
       <li>
-        <PaginationButton
-          type="primary"
-          shape="circle"
-          htmlType="button"
-          onClick={onPrevious}
-          disabled={currentPage === 1}
-          size={28}>
+        <PaginationButton type="primary" shape="circle" onClick={onPrevious} disabled={currentPage === 1} size={28}>
           <i className="icon-chevron-left" />
         </PaginationButton>
       </li>
@@ -62,25 +56,19 @@ function Pagination(props) {
           <li key={index}>
             <PaginationButton
               type="white"
-              htmlType="button"
               shape="circle"
               size={28}
               css="color: var(--text-color-gray)"
               onClick={() => onPageChange(pageNumber)}
-              className={`${(pageNumber === currentPage && 'selected') || ''}`}>
+              className={`${(pageNumber === currentPage && 'selected') || ''}`}
+              $pageNumBtn>
               {pageNumber}
             </PaginationButton>
           </li>
         );
       })}
       <li>
-        <PaginationButton
-          type="primary"
-          shape="circle"
-          htmlType="button"
-          onClick={onNext}
-          disabled={currentPage === lastPage}
-          size={28}>
+        <PaginationButton type="primary" shape="circle" onClick={onNext} disabled={currentPage === lastPage} size={28}>
           <i className="icon-chevron-right" />
         </PaginationButton>
       </li>

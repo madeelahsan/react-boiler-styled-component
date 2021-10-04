@@ -15,6 +15,8 @@ import {
   Pagination,
   Tooltips,
   Dropdown,
+  Message,
+  Tabset,
 } from './pages/ui';
 import Ui from './pages/ui/Ui';
 
@@ -35,6 +37,8 @@ function Router() {
       <Route exact path="/ui/pagination" component={Pagination} />
       <Route exact path="/ui/tooltips" component={Tooltips} />
       <Route exact path="/ui/dropdown" component={Dropdown} />
+      <Route exact path="/ui/message" component={Message} />
+      <Route exact path="/ui/tabset" component={Tabset} />
       <Route exact path="/" component={Main} />
     </Switch>
   );

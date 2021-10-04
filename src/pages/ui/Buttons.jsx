@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import { Grid } from 'sc-css-grid-system';
+
 import { Heading, Button } from '../../components';
 import { Flex } from '../../styles/helpers.styles';
 
@@ -9,52 +11,55 @@ export default function Buttons() {
     <>
       <div css="padding: 1.3rem">
         <Title level={1}>Buttons</Title>
-        <Grid css="margin: 0 0 30px;">
-          <Button type="primary" htmlType="button">
-            Primary
-          </Button>
-          <Button type="primary" htmlType="button" disabled>
+        <Grid sm={2} lg={3} xl={5} gap={20} css="margin: 0 0 30px; align-items: start;">
+          <Button type="primary">Primary</Button>
+
+          <Button type="danger">Danger</Button>
+          <Button type="success">Success</Button>
+          <Button type="warning">Warning</Button>
+          <Button type="primary" disabled>
             Disabled Button
           </Button>
-          <Button type="secondary" htmlType="button">
-            Secondary
-          </Button>
-          <Button type="outline" htmlType="button">
-            Outlined
-          </Button>
-          <Button type="white" htmlType="button" suffix={<i className="icon-camera" />}>
+          <Button type="secondary">Secondary</Button>
+          <Button type="light">light/gray</Button>
+          <Button type="outline">Outlined</Button>
+          <Button type="white" suffix={<i className="icon-camera" />}>
             White button with right icon
           </Button>
-          <Button type="white" htmlType="button" prefix={<i className="icon-check" />}>
+          <Button type="white" prefix={<i className="icon-check" />}>
             White button with left icon
           </Button>
-          <Button type="outline" htmlType="button" rounded>
+          <Button type="outline" rounded>
             Rounded button
           </Button>
-          <Button type="outline" htmlType="button" loading>
+          <Button type="outline" loading>
             loading...
           </Button>
-          <Button type="primary" htmlType="button" xs>
+          <Button type="primary" xs>
             Extra Small button
           </Button>
-          <Button type="white" htmlType="button" prefix={<i className="icon-shield-check" />} iconLeft rounded sm>
+          <Button type="white" prefix={<i className="icon-shield-check" />} iconLeft rounded sm>
             small button
           </Button>
+          <Button type="white" xs rounded css="color: #47c07a;">
+            custom styled button
+          </Button>
+
+          <Button color="light-blue">Custom Color Button using css Var</Button>
+          <Button color="#aae15d">Pass any color in color prop</Button>
           <Flex>
-            <Button type="primary" htmlType="button" shape="circle" size={46}>
+            <Button type="primary" shape="circle" size={46}>
               <i className="icon-bell" />
             </Button>
-            <Button type="white" htmlType="button" shape="circle" size={46}>
+            <Button type="white" shape="circle" size={46}>
               <i className="icon-bell" />
             </Button>
           </Flex>
         </Grid>
-        <Button type="primary" htmlType="button">
-          Full Width button
-        </Button>
+        <Button type="primary">Full Width button</Button>
         <br />
-        <Button type="primary" htmlType="button" css="max-width: 600px;">
-          Max width button (specify the max-width in css props)
+        <Button type="primary" width={600}>
+          Max width button
         </Button>
       </div>
     </>
@@ -63,11 +68,4 @@ export default function Buttons() {
 
 const Title = styled(Heading)`
   text-align: center;
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
 `;

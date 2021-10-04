@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // TODO : fix modal leave animation
 
 import React from 'react';
@@ -13,9 +14,12 @@ const propTypes = {
   setIsOpen: PropTypes.func,
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
+  lg: PropTypes.bool,
+  sm: PropTypes.bool,
+  isClosable: PropTypes.bool,
 };
 
-function Modal({ isOpen, setIsOpen, title, children }) {
+function Modal({ isOpen, setIsOpen, title, children, sm, lg, isClosable }) {
   const AnimatedDialogOverlay = animated(StyledDialogOverlay);
   const AnimatedDialogContent = animated(StyledDialogContent);
   const transitions = useTransition(isOpen, {
@@ -24,32 +28,32 @@ function Modal({ isOpen, setIsOpen, title, children }) {
     leave: { opacity: 0, y: 10 },
   });
 
+  const dismiss = () => (isClosable === false ? setIsOpen(true) : setIsOpen(false));
+
   return (
-    <div>
+    <>
       {transitions(
         (styles, item) =>
           item && (
-            <AnimatedDialogOverlay
-              style={{ opacity: styles.opacity }}
-              isOpen={isOpen}
-              onDismiss={() => setIsOpen(false)}>
-              <DialogCentered>
+            <AnimatedDialogOverlay style={{ opacity: styles.opacity }} isOpen={isOpen} onDismiss={dismiss}>
+              <DialogCentered $lg={lg} $sm={sm}>
                 <AnimatedDialogContent
                   aria-labelledby="dialog-title"
                   style={{
                     transform: styles.y.to(value => `translate3d(0px, ${value}px, 0px)`),
                   }}>
-                  <Flex justify="space-between" align="center" nowrap>
+                  <Flex justify="space-between" align="middle" nowrap css="margin-bottom: 1.875rem;">
                     <ModalHeading level={2}>{title}</ModalHeading>
-                    <CloseButton
-                      type="white"
-                      htmlType="button"
-                      shape="circle"
-                      onClick={() => setIsOpen(!isOpen)}
-                      size={46}
-                      css="flex-shrink:0;">
-                      <i className="icon-close" />
-                    </CloseButton>
+                    {isClosable !== false && (
+                      <CloseButton
+                        type="white"
+                        shape="circle"
+                        onClick={() => setIsOpen(!isOpen)}
+                        size={46}
+                        css="flex-shrink:0;">
+                        <i className="icon-close" />
+                      </CloseButton>
+                    )}
                   </Flex>
                   {children}
                 </AnimatedDialogContent>
@@ -57,7 +61,7 @@ function Modal({ isOpen, setIsOpen, title, children }) {
             </AnimatedDialogOverlay>
           ),
       )}
-    </div>
+    </>
   );
 }
 

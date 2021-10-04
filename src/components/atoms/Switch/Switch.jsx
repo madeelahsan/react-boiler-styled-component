@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledSwitch, SwitchLabel, SwitchHolder } from './Switch.styles';
+import { StyledSwitch, SwitchLabel, SwitchHolder, LabelHolder } from './Switch.styles';
 
 const propTypes = {
   type: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
 };
 
@@ -18,7 +18,7 @@ function Switch({ label, name, ...props }) {
       <SwitchHolder>
         <StyledSwitch type="checkbox" {...switchProps} />
         <SwitchLabel htmlFor={switchProps.id}>
-          {label}
+          {label && <LabelHolder>{label}</LabelHolder>}
           <span />
         </SwitchLabel>
       </SwitchHolder>

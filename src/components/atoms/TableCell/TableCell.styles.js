@@ -1,10 +1,13 @@
 import styled, { css } from 'styled-components/macro';
 
 const styles = css`
-  text-align: left;
-  padding: 1.375rem;
+  text-align: ${({ center }) => (center ? 'center' : 'left')};
+  padding: 1.125rem 0.9375rem;
   font-size: var(--font-size-xs);
   font-weight: bold;
+  @media (min-width: 992px) {
+    padding: ${({ sm }) => (sm ? '.75rem' : '1.375rem')};
+  }
   &:first-child {
     padding-left: 1.875rem;
   }

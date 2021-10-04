@@ -13,7 +13,13 @@
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
     "activityBarBadge.background": "#84453b",
-    "activityBarBadge.foreground": "#e7e7e7"
+    "activityBarBadge.foreground": "#e7e7e7",
+    "editorGroup.border": "#897fc6",
+    "panel.border": "#897fc6",
+    "sash.hoverBorder": "#897fc6",
+    "sideBar.border": "#897fc6",
+    "statusBarItem.remoteBackground": "#685cb6",
+    "statusBarItem.remoteForeground": "#e7e7e7"
   },
   "peacock.color": "#685CB6",
   "prettier.requireConfig": true,

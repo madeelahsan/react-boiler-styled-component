@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Heading, Dropdown } from '../../components';
+import { Heading, Dropdown, ReactDateRange } from '../../components';
+import { Flex } from '../../styles/helpers.styles';
 
 export default function DropdownUI() {
-  const items = [
+  const options = { one: 'One option', two: 'Another option' };
+  // eslint-disable-next-line no-unused-vars
+  const [value, setValue] = useState(options.one);
+
+  const [dateState, setDateState] = useState([
     {
-      id: 1,
-      value: 'All',
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection',
     },
-    {
-      id: 2,
-      value: 'Unresolved',
-    },
-    {
-      id: 3,
-      value: 'Settled',
-    },
-  ];
+  ]);
+
   return (
     <div css="padding: 1.3rem 1.3rem 30rem 1.3rem">
       <Title level={1}>Dropdown</Title>
-      <Dropdown title="Status" items={items} />
+      <Flex justify="center" css="gap: 50px">
+        <Dropdown title="Filter" filter>
+          <ReactDateRange
+            onChange={item => setDateState([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={dateState}
+          />
+        </Dropdown>
+        <Dropdown title="Status" options={options} setValue={setValue} />
+      </Flex>
     </div>
   );
 }

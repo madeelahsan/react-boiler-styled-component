@@ -5,22 +5,23 @@ import Fonts from './Fonts';
 import Icons from './css/custom-icons.css';
 
 const Styling = css`
-  //theme css variables
+  /* theme css variables */
   ${Variables}
 
-  // Fonts = Plus Jakarta Sans
+  /* Fonts = Plus Jakarta Sans */
   ${Fonts}
 
-  //custom icons
+  /* custom icons */
   ${Icons}
 
-  // (normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css)
+  /* (normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css) */
   ${normalize()}
 
   /* Other Reset that aren't define in normalize.css*/
   html {
     box-sizing: border-box;
     font-size: 100%;
+    scroll-behavior: smooth;
   }
 
   *,
@@ -29,17 +30,41 @@ const Styling = css`
     box-sizing: inherit;
   }
 
-  * {
-    max-height: 1000000px;
-  }
-
   body {
     color: var(--base-text-color);
     background: var(--base-background-color);
     font: var(--font-size-base) / var(--line-height-base) var(--base-font-family);
+    font-weight: 500;
+    position: relative;
     min-width: var(--base-min-width);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &.nav-active {
+      @media (max-width: 575px) {
+        overflow: hidden;
+      }
+    }
+
+    &.panel-active {
+      overflow: hidden;
+      &:before {
+        display: block;
+      }
+    }
+
+    &:before {
+      display: none;
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: -10%;
+      left: 0;
+      right: 0;
+      backdrop-filter: blur(4px);
+      background: rgba(50, 59, 75, 0.3);
+      z-index: 9;
+    }
   }
 
   img {
@@ -91,13 +116,24 @@ const Styling = css`
       color var(--animation-speed) ease-in-out;
   }
 
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    margin: 0 0 20px;
+    margin: 0 0 1.25rem;
+  }
+
+  p {
+    margin: 0;
   }
 
   /************* custom scrollbar styles ************/
@@ -105,7 +141,7 @@ const Styling = css`
   /* This will work on Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #13b1e6 #25214f;
+    scrollbar-color: var(--primary) #eceaf9;
   }
 
   /* Targtes on Chrome, Edge, and Safari */
@@ -122,7 +158,21 @@ const Styling = css`
   *::-webkit-scrollbar-thumb {
     background: var(--primary);
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.03);
-    border-radius: 3px;
+    border-radius: 30px;
+  }
+
+  /* Remove Arrows/Spinners from input type number */
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    appearance: textfield;
   }
 `;
 
@@ -132,6 +182,46 @@ const HelperClasses = css`
   }
   .mb-0 {
     margin-bottom: 0;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .font-bold {
+    font-weight: bold;
+  }
+  .font-medium {
+    font-weight: 500;
+  }
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .text-dark {
+    color: var(--secondary-text-color);
+  }
+  .text-primary {
+    color: var(--primary-text-color);
+  }
+  .truncate-sm {
+    @media (max-width: 575px) {
+      display: inline-block;
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .truncate-md {
+    @media (min-width: 768px) {
+      display: inline-block;
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .mb-20 {
+    margin-bottom: 20px;
   }
 `;
 

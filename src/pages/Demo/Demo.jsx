@@ -1,26 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { DemoHolder, DemoList, ListItem, Card } from './Demo.styles';
+import { Grid } from 'sc-css-grid-system';
 import { Button } from '../../components';
+import { DemoHolder, ListItem, Card } from './Demo.styles';
 
 function Demo() {
   return (
     <>
       <DemoHolder>
         <Card>
-          <DemoList>
+          <Grid as="ul" xs={2} gap={20}>
             <ListItem>
-              <Button type="primary" htmlType="button" as={Link} to="/login">
+              <Button type="primary" as={Link} to="/login">
                 Login
               </Button>
             </ListItem>
             <ListItem>
-              <Button type="primary" htmlType="button" as={Link} to="/ui">
+              <Button type="primary" as={Link} to="/ui">
                 Ui
               </Button>
             </ListItem>
-          </DemoList>
+            <ListItem>
+              <Button type="primary" as={Link} to="/onboarding">
+                Onboarding
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button type="primary" as={Link} to="/dashboard">
+                Dashboard
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button type="primary" as={Link} to="/free-credit-score-landing">
+                Free Credit Score
+              </Button>
+            </ListItem>
+          </Grid>
         </Card>
       </DemoHolder>
     </>

@@ -2,26 +2,46 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import styled from 'styled-components/macro';
-import { StyledFormGroup, InputHolder } from '../../../styles/helpers.styles';
-import { Error } from './Field.styles';
+import { StyledFormGroup } from '../../../styles/helpers.styles';
+import { Error, InputHolder } from './Field.styles';
 import { Label, Input, InputIcon, FakeLabel, FakeInput } from '../..';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
   invalid: PropTypes.bool,
   rounded: PropTypes.bool,
+  noMargin: PropTypes.bool,
   error: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
+  margin: PropTypes.string,
   prefix: PropTypes.node,
   suffix: PropTypes.node,
+  button: PropTypes.node,
+  searchField: PropTypes.bool,
+  onlyRead: PropTypes.bool,
 };
 
 const defaultProps = {
   type: 'text',
 };
 
-const Field = ({ error, name, invalid, label, type, prefix, suffix, rounded, ...props }) => {
+const Field = ({
+  error,
+  name,
+  invalid,
+  label,
+  type,
+  prefix,
+  suffix,
+  rounded,
+  noMargin,
+  margin,
+  button,
+  searchField,
+  onlyRead,
+  ...props
+}) => {
   const [isRevealPwd, setIsRevealPwd] = useState(false);
   const inputProps = {
     id: name,
@@ -33,9 +53,13 @@ const Field = ({ error, name, invalid, label, type, prefix, suffix, rounded, ...
   };
   const renderInputFirst = type === 'checkbox' || type === 'radio';
   return (
-    <StyledFormGroup>
+    <StyledFormGroup
+      noMargin={noMargin}
+      css={`
+        margin-bottom: ${margin};
+      `}>
       {renderInputFirst && label && (
-        <Label htmlFor={inputProps.id} css="display: inline-flex; align-items:center; margin-bottom:0;">
+        <Label htmlFor={inputProps.id} $onlyRead={onlyRead} css="display: flex; align-items:center; margin-bottom:0;">
           <Input {...inputProps} />
           <FakeInput>{type === 'checkbox' && <i className="icon-check" />}</FakeInput>
           <FakeLabel>{label}</FakeLabel>
@@ -45,7 +69,7 @@ const Field = ({ error, name, invalid, label, type, prefix, suffix, rounded, ...
       {renderInputFirst || (
         <>
           {label && <Label htmlFor={inputProps.id}>{label}</Label>}
-          <InputHolder>
+          <InputHolder $searchField={searchField}>
             {/* input left icon */}
             {prefix && (
               <InputIcon
@@ -67,6 +91,8 @@ const Field = ({ error, name, invalid, label, type, prefix, suffix, rounded, ...
                   $invalid={invalid}
                   type={isRevealPwd ? 'text' : 'password'}
                   $rounded={rounded}
+                  $button={button && true}
+                  autoComplete="on"
                 />
                 <InputIcon $suffix css="cursor: pointer" onClick={() => setIsRevealPwd(prevState => !prevState)}>
                   {isRevealPwd ? <i className="icon-eye-open" /> : <i className="icon-eye-close" />}
@@ -75,18 +101,21 @@ const Field = ({ error, name, invalid, label, type, prefix, suffix, rounded, ...
             ) : (
               <>
                 {/* any other input type */}
-                <Input {...inputProps} $prefix={prefix} $suffix={suffix} $invalid={invalid} $rounded={rounded} />
+                <Input
+                  {...inputProps}
+                  $prefix={prefix}
+                  $suffix={suffix}
+                  $invalid={invalid}
+                  $rounded={rounded}
+                  $button={button && true}
+                />
                 {/* input right icon */}
                 {suffix && (
-                  <InputIcon
-                    as={type === 'search' && 'button'}
-                    type={type === 'search' ? 'button' : undefined}
-                    $suffix={suffix}
-                    $invalid={invalid}
-                    css={type === 'search' && 'color: var(--primary)'}>
+                  <InputIcon $suffix={suffix} $invalid={invalid}>
                     {suffix}
                   </InputIcon>
                 )}
+                {button && button}
               </>
             )}
           </InputHolder>

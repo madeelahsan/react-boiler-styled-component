@@ -4,10 +4,10 @@ const Styles = css`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: ${props => props.$prefix && '23px'};
-  right: ${props => props.$suffix && '23px'};
+  left: ${({ $prefix }) => $prefix && '23px'};
+  right: ${({ $suffix }) => $suffix && '23px'};
+  color: ${({ $invalid }) => ($invalid ? 'var(--danger)' : 'var(--secondary-text-color)')};
   font-size: var(--font-size-lg);
-  color: ${props => (props.$invalid ? 'var(--danger)' : 'var(--secondary-text-color)')};
   background: none;
   border: none;
   padding: 0;

@@ -7,7 +7,7 @@ export const Card = styled.div`
     0 20.7px 38px rgba(0, 0, 0, 0.063), 0 41px 104px rgba(0, 0, 0, 0.1);
   padding: 30px;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   margin: 0 auto;
   border-radius: 8px;
 `;
@@ -19,13 +19,6 @@ export const DemoHolder = styled.div`
   align-items: center;
 `;
 
-export const DemoList = styled.ul``;
-
-export const ListItem = styled.li`
-  margin-bottom: 15px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
+export const ListItem = styled.li``;
 
 export const ListItemLink = styled(Link)``;

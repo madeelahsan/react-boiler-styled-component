@@ -1,33 +1,79 @@
 // TODO: Fix type appearing in Dom as a result of assigning link to "as" prop
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledButton from './Button.styles';
+import { StyledButton, IconHolder } from './Button.styles';
 import { ButtonLoader } from '../Loaders';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
   loading: PropTypes.bool,
-  type: PropTypes.string.isRequired,
-  htmlType: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  htmlType: PropTypes.string,
   prefix: PropTypes.node,
   suffix: PropTypes.node,
+  shape: PropTypes.string,
+  size: PropTypes.number,
+  iconMobile: PropTypes.bool,
+  rounded: PropTypes.bool,
+  sm: PropTypes.bool,
+  width: PropTypes.number,
+  unStyled: PropTypes.bool,
+  color: PropTypes.string,
 };
 
-const Button = React.forwardRef(({ children, loading, prefix, suffix, htmlType, type, ...rest }, ref) => (
-  <StyledButton $prefix={prefix} $suffix={suffix} {...rest} type={htmlType} $type={type} ref={ref}>
-    {!loading ? (
-      <>
-        {prefix && <span>{prefix}</span>} {children} {suffix && <span>{suffix}</span>}
-      </>
-    ) : (
-      <>
-        <ButtonLoader />
-        loading...
-      </>
-    )}
-  </StyledButton>
-));
+const Button = React.forwardRef(
+  (
+    {
+      children,
+      loading,
+      prefix,
+      suffix,
+      htmlType,
+      type,
+      shape,
+      size,
+      unStyled,
+      iconMobile,
+      rounded,
+      sm,
+      width,
+      color,
+      ...rest
+    },
+    ref,
+  ) => (
+    <StyledButton
+      $prefix={prefix}
+      $suffix={suffix}
+      type={htmlType}
+      $type={type}
+      $shape={shape}
+      $size={size}
+      $unStyled={unStyled}
+      $iconMobile={iconMobile}
+      $rounded={rounded}
+      $width={width}
+      $sm={sm}
+      $color={color}
+      ref={ref}
+      {...rest}>
+      {!loading ? (
+        <>
+          {prefix && <IconHolder>{prefix}</IconHolder>} {children} {suffix && <IconHolder>{suffix}</IconHolder>}
+        </>
+      ) : (
+        <>
+          <ButtonLoader />
+          loading...
+        </>
+      )}
+    </StyledButton>
+  ),
+);
 
 Button.propTypes = propTypes;
+Button.defaultProps = {
+  htmlType: 'button',
+};
 
 export default Button;

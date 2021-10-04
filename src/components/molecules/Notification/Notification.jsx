@@ -17,7 +17,7 @@ function Notification({ type, message, title }) {
       <StyledNotification $type={type}>
         <NotificationIcon $type={type} />
         <TextHolder>
-          <Heading level={5} css="margin-bottom:.5rem;">
+          <Heading level={5} css="margin-bottom:4px;">
             {title}
           </Heading>
           <Paragraph $type={type} css="margin:0; color: var(--base-text-color) !important;">

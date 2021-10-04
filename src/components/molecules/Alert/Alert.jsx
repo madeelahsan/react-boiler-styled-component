@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AlertIcon, Paragraph } from '../..';
-import { StyledAlert } from './Alert.styles';
+import { AlertIcon } from '../..';
+import { StyledAlert, Message } from './Alert.styles';
 
 const propTypes = {
   type: PropTypes.string,
   message: PropTypes.string,
 };
 
-function Alert({ type, message }) {
+function Alert({ type, message, ...props }) {
   return (
     <>
-      <StyledAlert $type={type}>
+      <StyledAlert $type={type} {...props}>
         <AlertIcon $type={type} />
-        <Paragraph $type={type}>{message}</Paragraph>
+        <Message $type={type}>{message}</Message>
       </StyledAlert>
     </>
   );

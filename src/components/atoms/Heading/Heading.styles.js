@@ -6,8 +6,14 @@ const HeadingColor = css`
 
 export const H1 = styled.h1`
   ${HeadingColor}
-  font-size: var(--h1-font-size);
-  line-height: var(--h1-line-height);
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+  margin-bottom: 0.625rem;
+  @media (min-width: 768px) {
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-line-height);
+    margin-bottom: 1.25rem;
+  }
 `;
 
 export const H2 = styled.h2`

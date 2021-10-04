@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { DemoHolder, DemoList, ListItem, Card } from '../Demo/Demo.styles';
+import { Grid } from 'sc-css-grid-system';
+import { DemoHolder, ListItem, Card } from '../Demo/Demo.styles';
 import { Button } from '../../components';
 
 export default function Ui() {
@@ -9,7 +9,7 @@ export default function Ui() {
     <>
       <DemoHolder>
         <Card>
-          <DemoList>
+          <Grid as="ul" xs={2} gap={20}>
             <ListItem>
               <Button type="primary" htmlType="button" as={Link} to="/ui/typography">
                 Typography
@@ -65,7 +65,17 @@ export default function Ui() {
                 Dropdown
               </Button>
             </ListItem>
-          </DemoList>
+            <ListItem>
+              <Button type="primary" as={Link} to="/ui/message">
+                Message
+              </Button>
+            </ListItem>
+            <ListItem>
+              <Button type="primary" as={Link} to="/ui/tabset">
+                Tabset
+              </Button>
+            </ListItem>
+          </Grid>
         </Card>
       </DemoHolder>
     </>

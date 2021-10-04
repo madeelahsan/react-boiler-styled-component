@@ -7,26 +7,27 @@ export const StyledNotification = styled(StyledAlert)`
   border-left-width: 6px;
   border-left-style: solid;
   padding: 0.3125rem 1.25rem;
-  ${props =>
-    props.$type === 'success' &&
+
+  ${({ $type }) =>
+    $type === 'success' &&
     css`
       border-color: var(--success);
     `}
 
-  ${props =>
-    props.$type === 'info' &&
+  ${({ $type }) =>
+    $type === 'info' &&
     css`
       border-color: var(--info);
     `}
 
-    ${props =>
-    props.$type === 'error' &&
+  ${({ $type }) =>
+    $type === 'error' &&
     css`
       border-color: var(--danger);
     `}
 
-    ${props =>
-    props.$type === 'warning' &&
+  ${({ $type }) =>
+    $type === 'warning' &&
     css`
       border-color: var(--warning);
     `}
