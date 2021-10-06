@@ -20,21 +20,6 @@ function Demo() {
                 Ui
               </Button>
             </ListItem>
-            <ListItem>
-              <Button type="primary" as={Link} to="/onboarding">
-                Onboarding
-              </Button>
-            </ListItem>
-            <ListItem>
-              <Button type="primary" as={Link} to="/dashboard">
-                Dashboard
-              </Button>
-            </ListItem>
-            <ListItem>
-              <Button type="primary" as={Link} to="/free-credit-score-landing">
-                Free Credit Score
-              </Button>
-            </ListItem>
           </Grid>
         </Card>
       </DemoHolder>
