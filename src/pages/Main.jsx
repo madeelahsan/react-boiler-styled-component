@@ -1,17 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import styled from 'styled-components/macro';
+import Heading from '../components/atoms/Heading';
 
 export default function MainPage() {
   return (
     <>
-      <span>
-        Go to{' '}
-        <Link to="/demo" css="color: var(--light-blue);">
-          Demo <i className="icon-chevron-right" />
-        </Link>
-      </span>
+      <Heading level={3} css="text-align: center; padding: 20px;">
+        &quot;Npm Run Storybook&quot; for components Demo
+      </Heading>
     </>
   );
 }
