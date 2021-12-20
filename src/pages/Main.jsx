@@ -7,7 +7,7 @@ export default function MainPage() {
   return (
     <>
       <Heading level={3} css="text-align: center; padding: 20px;">
-        &quot;Npm Run Storybook&quot; for components Demo
+        &quot;npm run storybook&quot; for components Demo.
       </Heading>
     </>
   );
