@@ -25,7 +25,6 @@
     "react-spring": "^9.2.4",
     "react-toastify": "^7.0.4",
     "react-tooltip": "^4.2.21",
-    "sc-css-grid-system": "^1.0.7",
     "styled-components": "^5.2.1",
     "uuidv4": "^6.2.11"
   },
@@ -35,11 +34,23 @@
     "lint:css": "stylelint \"./src/**/*.js\"",
     "lint:js": "eslint --ext jsx,js src/",
     "lint:js:fix": "eslint --ext jsx,js --fix src/",
-    "lint:all": "yarn lint:css && yarn lint:js"
+    "lint:all": "yarn lint:css && yarn lint:js",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
       "react-app"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -55,6 +66,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/node-logger": "^6.3.12",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.12",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",

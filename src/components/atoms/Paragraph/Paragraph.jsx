@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import { StyledParagraph } from './Paragraph.styles';
 
 const propTypes = {
-  children: PropTypes.node.isRequired,
-  xs: PropTypes.node,
-  sm: PropTypes.node,
-  lg: PropTypes.node,
-  xl: PropTypes.node,
+  children: PropTypes.node,
+  noMargin: PropTypes.bool,
+  xs: PropTypes.bool,
+  sm: PropTypes.bool,
+  lg: PropTypes.bool,
+  xl: PropTypes.bool,
 };
 
-function Paragraph({ children, xs, sm, lg, xl, ...props }) {
+function Paragraph({ children, noMargin, xs, sm, lg, xl, ...props }) {
   return (
     <>
-      <StyledParagraph xs={xs} sm={sm} lg={lg} xl={xl} {...props}>
+      <StyledParagraph noMargin={noMargin} xs={xs} sm={sm} lg={lg} xl={xl} {...props}>
         {children}
       </StyledParagraph>
     </>
