@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
+import { lazy } from 'react';
 import styled from 'styled-components/macro';
-import { Button } from '../..';
+
+const Button = lazy(() => import('../Button'));
 
 export const StyledButton = styled(Button)`
   position: absolute;

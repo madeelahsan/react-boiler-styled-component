@@ -13,8 +13,8 @@ function DataTabs({ data }) {
         <Wrap>
           <StyledTabList>
             {data.map((tab, index) => (
-              <TabBtn>
-                <StyledTab key={index}>{tab.label}</StyledTab>
+              <TabBtn key={index}>
+                <StyledTab>{tab.label}</StyledTab>
               </TabBtn>
             ))}
           </StyledTabList>

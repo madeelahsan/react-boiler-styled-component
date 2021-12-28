@@ -4,61 +4,39 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
 
 export const StyledTabs = styled(Tabs)`
   flex-grow: 1;
-
-  @media (min-width: 768px) {
-    padding: 0 0 0 40px;
-  }
 `;
 
 export const Wrap = styled.div`
-  @media (max-width: 767px) {
-    overflow-x: auto;
-    margin: 0 -20px;
-  }
+  overflow-x: auto;
+  border-bottom: 1px solid #e6e8ec;
+  position: relative;
 
   &::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
   }
 `;
 
 export const StyledTabList = styled(TabList)`
   display: flex;
   white-space: nowrap;
-  margin: 0;
-  padding: 0 20px 10px;
+  margin: 0 0 3px;
   position: relative;
-
-  @media (min-width: 768px) {
-    white-space: normal;
-    margin: 0;
-    padding: 0;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: -20px;
-    right: -70px;
-    bottom: 10px;
-    height: 1px;
-    background: #e6e8ec;
-    z-index: -1;
-
-    @media (min-width: 576px) {
-      left: 0;
-      right: 0;
-    }
-    @media (min-width: 768px) {
-      left: 0;
-      right: -110px;
-      bottom: 0;
-    }
-  }
+  z-index: 1;
 `;
 
 export const TabBtn = styled.div`
-  padding: 0 15px;
-
+  padding: 0 5px;
+  flex-shrink: 0;
+  @media (min-width: 768px) {
+    padding: 0 5px;
+  }
   &:first-child {
     padding-left: 0;
   }
@@ -71,9 +49,14 @@ export const StyledTab = styled(Tab)`
   text-transform: capitalize;
   color: var(--text-color-gray);
   position: relative;
-  padding: 25px 0;
+  padding: 20px 5px;
+  border-radius: 6px;
+  @media (min-width: 768px) {
+    padding: 14px 10px;
+  }
 
   &:after {
+    display: none;
     visibility: hidden;
     opacity: 0;
     transition: ease-in-out 0.5s;
@@ -90,7 +73,8 @@ export const StyledTab = styled(Tab)`
 
   &:hover,
   &[data-selected] {
-    color: var(--secondary-text-color);
+    background: var(--primary);
+    color: var(--white);
 
     &:after {
       visibility: visible;
@@ -99,12 +83,13 @@ export const StyledTab = styled(Tab)`
     }
   }
 `;
+
 export const StyledTabPanels = styled(TabPanels)`
   overflow: hidden;
-  padding: 40px 0;
+  padding: 20px 0 20px;
 
   @media (min-width: 768px) {
-    padding: 50px 0;
+    padding: 30px 0;
   }
 `;
 

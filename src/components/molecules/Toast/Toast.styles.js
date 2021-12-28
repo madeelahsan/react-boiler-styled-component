@@ -2,11 +2,14 @@ import styled, { css } from 'styled-components/macro';
 
 export const StyledAlert = styled.div`
   border-radius: 8px;
-  padding: 1rem 3.9375rem 1rem 1rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   font-size: var(--font-size-sm);
   line-height: 1.25rem;
+  @media (min-width: 768px) {
+    padding: 1rem 3.9375rem 1rem 1rem;
+  }
 
   ${({ $type }) =>
     $type === 'success' &&

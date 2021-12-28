@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { H1, H2, H3, H4, H5 } from './Heading.styles';
+import { H1, H2, H3, H4, H5, H6 } from './Heading.styles';
 
 const propTypes = {
-  children: PropTypes.node.isRequired,
-  level: PropTypes.number.isRequired,
+  children: PropTypes.node,
+  level: PropTypes.number,
 };
 
 function Heading({ level, children, ...rest }) {
@@ -17,8 +17,10 @@ function Heading({ level, children, ...rest }) {
       return <H3 {...rest}>{children}</H3>;
     case 4:
       return <H4 {...rest}>{children}</H4>;
-    default:
+    case 5:
       return <H5 {...rest}>{children}</H5>;
+    default:
+      return <H6 {...rest}>{children}</H6>;
   }
 }
 

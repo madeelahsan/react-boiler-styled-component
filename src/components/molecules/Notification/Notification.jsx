@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { StyledNotification, TextHolder } from './Notification.styles';
 
-import { AlertIcon as NotificationIcon, Paragraph, Heading } from '../..';
+import AlertIcon from '../../atoms/AlertIcon';
+import Heading from '../../atoms/Heading';
+import Paragraph from '../../atoms/Paragraph';
 
 const propTypes = {
   type: PropTypes.string,
@@ -16,7 +18,7 @@ function Notification({ type, message, title, ...props }) {
   return toast(
     <>
       <StyledNotification $type={type} {...props}>
-        <NotificationIcon $type={type} />
+        <AlertIcon $type={type} />
         <TextHolder>
           <Heading level={5} css="margin-bottom:4px;">
             {title}

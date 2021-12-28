@@ -1,10 +1,24 @@
 import { darken, cssVar } from 'polished';
-import styled, { css } from 'styled-components/macro';
+import styled, { css, keyframes } from 'styled-components/macro';
 import { ListboxButton } from '@reach/listbox';
 
 export const IconHolder = styled.span``;
 
+const loadingCircle = keyframes`
+  to {
+    transform: rotate(1turn);
+  }
+`;
+
+export const BtnLoader = styled.span`
+  margin-right: ${({ $width }) => ($width > 115 || !$width) && '10px'};
+  svg {
+    animation: ${loadingCircle} 1s linear infinite;
+  }
+`;
+
 const Styles = css`
+  position: relative;
   border: none;
   display: block;
   width: 100%;
@@ -50,13 +64,21 @@ const Styles = css`
       }
     `}
 
-  ${({ $type }) =>
+  ${({ $type, $loading }) =>
     $type === 'primary' &&
     css`
       background: var(--primary-btn-background);
       &:hover {
         background: ${darken(0.2, cssVar('--primary'))};
       }
+      ${$loading &&
+      css`
+        ${BtnLoader} {
+          svg {
+            fill: var(--white);
+          }
+        }
+      `}
     `}
     
   ${({ $type }) =>
@@ -74,6 +96,15 @@ const Styles = css`
       background: var(--danger);
       &:hover {
         background: ${darken(0.2, cssVar('--danger'))};
+      }
+    `}
+
+  ${({ $type }) =>
+    $type === 'danger2' &&
+    css`
+      background: var(--danger2);
+      &:hover {
+        background: ${darken(0.2, cssVar('--danger2'))};
       }
     `}
 
@@ -108,32 +139,6 @@ const Styles = css`
       }
     `}
 
-  ${({ $suffix, $prefix }) =>
-    ($suffix || $prefix) &&
-    css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    `}
-
-  ${({ $rounded }) =>
-    $rounded &&
-    css`
-      border-radius: 75px;
-    `}
-
-  ${({ $shape, $size }) =>
-    $shape === 'circle' &&
-    css`
-      border-radius: 100%;
-      width: ${$size}px;
-      height: ${$size}px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    `}
-
   ${({ $type }) =>
     $type === 'light' &&
     css`
@@ -161,7 +166,7 @@ const Styles = css`
       }
     `}
 
-    ${({ $type }) =>
+  ${({ $type }) =>
     $type === 'whitePrimary' &&
     css`
       color: var(--primary);
@@ -176,11 +181,37 @@ const Styles = css`
       }
     `}
 
+  ${({ $suffix, $prefix }) =>
+    ($suffix || $prefix) &&
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
+
+  ${({ $rounded }) =>
+    $rounded &&
+    css`
+      border-radius: 75px;
+    `}
+
+  ${({ $shape, $size }) =>
+    $shape === 'circle' &&
+    css`
+      border-radius: 100%;
+      width: ${$size}px;
+      height: ${$size}px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
+
   ${({ disabled }) =>
     disabled &&
     css`
       pointer-events: none;
-      opacity: 0.4;
+      opacity: 0.6;
     `}
 
   ${({ mobileCircle }) =>
@@ -195,7 +226,7 @@ const Styles = css`
           margin: 0 !important;
         }
         .text {
-          text-indent: -9999px;
+          display: none;
         }
       }
     `}
@@ -204,22 +235,22 @@ const Styles = css`
     $iconMobile &&
     css`
       @media (max-width: 1199px) {
-        overflow: hidden;
         border-radius: 100%;
         width: 46px;
         height: 46px;
         padding: 0;
+        margin: 0;
         ${IconHolder} {
           margin: 0;
         }
         .text {
-          text-indent: -9999px;
+          display: none;
         }
       }
       @media (max-width: 991px) {
         background: none;
-        width: auto;
-        height: auto;
+        width: 16px;
+        height: 16px;
         border: none;
         box-shadow: none;
         border-radius: 0;
@@ -250,6 +281,15 @@ const Styles = css`
     css`
       max-width: ${$width}px;
     `}
+  
+  ${({ $loading }) =>
+    $loading &&
+    css`
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    `}
+
+  
 
   @media (max-width: 575px) {
     padding-left: 0.625rem;
@@ -265,5 +305,49 @@ export const StyledListBoxButton = styled(ListboxButton)`
   ${Styles}
   &:hover,&:focus-visible {
     outline: none;
+  }
+`;
+
+export const LoaderWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BadgeHolder = styled.span`
+  text-transform: uppercase;
+  background: linear-gradient(75.96deg, rgba(104, 218, 133, 0.9) 0%, rgba(156, 236, 82, 0.9) 100%);
+  backdrop-filter: blur(4px);
+  border-radius: 25px;
+  color: var(--white);
+  font-weight: 800;
+  font-size: 8px;
+  line-height: 1;
+  height: 14px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  ${({ $contestBadge }) =>
+    $contestBadge &&
+    css`
+      background: linear-gradient(to right, #e02121 0%, #db5757 100%);
+    `}
+
+  @media (min-width: 992px) {
+    top: -10px;
+    font-size: 10px;
+    padding: 0 6px;
+    height: 20px;
+  }
+  @media (min-width: 1200px) {
+    left: auto;
+    right: 0;
+    transform: none;
   }
 `;

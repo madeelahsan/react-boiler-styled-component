@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
-import React, { lazy } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
 import { StyledAlert, Message } from './Toast.styles';
-import { AlertIcon } from '../..';
+import AlertIcon from '../../atoms/AlertIcon';
 
 const propTypes = {
   type: PropTypes.string,

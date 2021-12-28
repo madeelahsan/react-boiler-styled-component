@@ -31,3 +31,10 @@ export const StyledDateRange = styled(DateRange)`
     }
   }
 `;
+
+export const ButtonHolder = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+`;

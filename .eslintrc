@@ -6,50 +6,35 @@
     "airbnb",
     "plugin:jsx-a11y/recommended",
     "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
-  "plugins": [
-    "jsx-a11y",
-    "prettier"
-  ],
-  "ignorePatterns": [
-    "./client/tests/*",
-    "./client/styles/*"
-  ],
+  "plugins": ["jsx-a11y", "prettier"],
+  "ignorePatterns": ["./client/tests/*", "./client/styles/*"],
   "rules": {
     // javascript
     "semi": 0,
-    "camelcase": 1,
-    
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "warn",
-          "error"
-        ]
-      }
-    ],
+    "camelcase": 0,
+    "no-nested-ternary": 0,
+    "no-console": 1,
     "no-unused-vars": "error",
     // react
     "react-hooks/exhaustive-deps": 0,
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
     "react/require-default-props": 0,
-    "react/no-array-index-key" :0,
+    "react/no-array-index-key": 0,
+    "jsx-a11y/anchor-is-valid": 0,
     "react/forbid-prop-types": [
       1,
       {
-        "forbid": [
-          "any"
-        ]
+        "forbid": ["any"]
       }
     ],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".jsx"
-        ]
+        "extensions": [".jsx"]
       }
     ],
     "react/state-in-constructor": 0,
@@ -58,16 +43,16 @@
     "import/prefer-default-export": 0,
 
     "no-restricted-imports": [
-        "error",
-        {
-            "paths": [
-                {
-                    "name": "styled-components",
-                    "message": "Please import from styled-components/macro.",
-                },
-            ],
-            "patterns": ["!styled-components/macro"],
-        },
+      "error",
+      {
+        "paths": [
+          {
+            "name": "styled-components",
+            "message": "Please import from styled-components/macro."
+          }
+        ],
+        "patterns": ["!styled-components/macro"]
+      }
     ],
     // prettier
     "prettier/prettier": [
@@ -78,12 +63,12 @@
         "printWidth": 120,
         "semi": true,
         "singleQuote": true,
-        "tabs": false,
         "useTabs": false,
         "quoteProps": "as-needed",
         "jsxSingleQuote": false,
         "bracketSpacing": true,
         "jsxBracketSameLine": true,
+        "bracketSameLine": true,
         "arrowParens": "avoid",
         "requirePragma": false,
         "insertPragma": false,
@@ -91,5 +76,12 @@
         "endOfLine": "auto"
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
   }
 }

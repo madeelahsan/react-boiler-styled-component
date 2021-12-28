@@ -1,9 +1,14 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { StyledFormGroup } from '../../../styles/helpers.styles';
-import { Label } from '../..';
+import Label from '../Label';
 
 export const SwitchHolder = styled(StyledFormGroup)`
   display: flex;
+  ${({ noMargin }) =>
+    noMargin &&
+    css`
+      margin: 0;
+    `}
 `;
 
 export const SwitchLabel = styled(Label)`

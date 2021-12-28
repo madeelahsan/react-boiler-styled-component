@@ -20,16 +20,18 @@ const propTypes = {
   options: PropTypes.object,
   children: PropTypes.node,
   twoBtns: PropTypes.bool,
+  type: PropTypes.string,
+  size: PropTypes.string,
 };
 
-function Dropdown({ title, options, setValue, filter, children, twoBtns }) {
+function Dropdown({ title, options, setValue, filter, children, twoBtns, type = 'light', size = 40 }) {
   return (
     <>
       {filter ? (
         <StyledListboxInput onChange={() => ''}>
           {({ isExpanded }) => (
             <>
-              <ReachListBoxButton $type="light" $size={40} $shape="circle">
+              <ReachListBoxButton $type={type} $size={size} $shape="circle">
                 {isExpanded ? <i className="icon-close" /> : <i className="icon-filter" />}
               </ReachListBoxButton>
               <StyledListboxPopover $calendar portal={false} $twoBtns={twoBtns}>
@@ -47,14 +49,14 @@ function Dropdown({ title, options, setValue, filter, children, twoBtns }) {
         </StyledListboxInput>
       ) : (
         <StyledListboxInput onChange={value => setValue(value)}>
-          <ReachListBoxButton $type="light" $size={40} $shape="circle">
+          <ReachListBoxButton $type={type} $size={size} $shape="circle">
             <i className="icon-menu-vertical" />
           </ReachListBoxButton>
           <StyledListboxPopover portal={false} $twoBtns={twoBtns}>
             {title && <Title sm>{title}</Title>}
             <StyledListboxList>
               {Object.keys(options).map(option => (
-                <StyledListboxOption key={option} value={option} label={options[option]}>
+                <StyledListboxOption key={option} value={options[option]} label={options[option]}>
                   {options[option]}
                 </StyledListboxOption>
               ))}

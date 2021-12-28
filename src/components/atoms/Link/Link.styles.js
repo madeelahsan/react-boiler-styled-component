@@ -2,7 +2,8 @@ import { css } from 'styled-components/macro';
 
 export const styles = css`
   color: var(--link-color);
-  text-decoration: ${props => props.$underline && 'underline'};
+  cursor: pointer;
+  text-decoration: ${({ $underline }) => $underline && 'underline'};
   &:hover {
     text-decoration: none;
   }

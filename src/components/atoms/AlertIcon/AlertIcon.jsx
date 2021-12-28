@@ -11,6 +11,8 @@ function AlertIcon({ $type }) {
     switch ($type) {
       case 'error':
         return 'icon-error-circle';
+      case 'info-red':
+        return 'icon-info-circle';
       case 'warning':
         return 'icon-warning';
       case 'success':

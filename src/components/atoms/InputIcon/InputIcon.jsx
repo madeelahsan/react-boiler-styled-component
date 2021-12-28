@@ -4,9 +4,9 @@ import { StyledInputIcon } from './InputIcon.styles';
 
 const propTypes = {
   children: PropTypes.node,
-  prefix: PropTypes.bool,
-  invalid: PropTypes.bool,
-  suffix: PropTypes.bool,
+  prefix: PropTypes.oneOfType([PropTypes.bool, PropTypes.node, PropTypes.object]),
+  invalid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  suffix: PropTypes.oneOfType([PropTypes.bool, PropTypes.node, PropTypes.object]),
 };
 
 function InputIcon({ prefix, invalid, suffix, children, ...props }) {

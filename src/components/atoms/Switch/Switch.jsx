@@ -6,16 +6,18 @@ const propTypes = {
   type: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
+  noMargin: PropTypes.bool,
 };
 
-function Switch({ label, name, ...props }) {
+function Switch({ label, name, noMargin, ...props }) {
   const switchProps = {
     id: name,
+    name,
     ...props,
   };
   return (
     <>
-      <SwitchHolder>
+      <SwitchHolder noMargin={noMargin}>
         <StyledSwitch type="checkbox" {...switchProps} />
         <SwitchLabel htmlFor={switchProps.id}>
           {label && <LabelHolder>{label}</LabelHolder>}

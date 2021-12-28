@@ -2,6 +2,14 @@ import styled from 'styled-components/macro';
 import ReactTooltip from 'react-tooltip';
 
 export const StyledTooltip = styled(ReactTooltip)`
+  &.__react_component_tooltip {
+    /* white-space: nowrap; */
+    width: 200px !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    line-height: 15px !important;
+    padding: 8px 10px !important;
+  }
   &.type-success {
     background: var(--success);
     &.place-top {

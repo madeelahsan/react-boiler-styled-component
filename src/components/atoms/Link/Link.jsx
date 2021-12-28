@@ -13,14 +13,15 @@ const Anchor = styled.a`
 `;
 
 const Link = ({ ...props }) => {
-  const { to } = props;
+  const { to, underline } = props;
   if (to) {
-    return <StyledLink {...props} />;
+    return <StyledLink $underline={underline} {...props} />;
   }
-  return <Anchor {...props} />;
+  return <Anchor $underline={underline} {...props} />;
 };
 
 Link.propTypes = {
+  underline: PropTypes.bool,
   to: PropTypes.string,
 };
 

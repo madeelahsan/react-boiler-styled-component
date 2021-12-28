@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
-import { Paragraph } from '../..';
+import Paragraph from '../../atoms/Paragraph';
 import { MessageHolder } from './Message.styles';
 
 const propTypes = {

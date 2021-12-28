@@ -5,6 +5,8 @@ const styles = css`
   padding: 1.125rem 0.9375rem;
   font-size: var(--font-size-xs);
   font-weight: bold;
+  word-break: break-all;
+
   @media (min-width: 992px) {
     padding: ${({ sm }) => (sm ? '.75rem' : '1.375rem')};
   }
@@ -19,6 +21,9 @@ const styles = css`
 export const Th = styled.th`
   ${styles}
   background: var(--white);
+  @media (min-width: 992px) {
+    padding: ${({ headSm }) => (headSm ? '.75rem' : '1.375rem')};
+  }
   &:first-child {
     border-top-left-radius: 80px;
     border-bottom-left-radius: 80px;

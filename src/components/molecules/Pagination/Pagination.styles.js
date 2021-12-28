@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/macro';
-import { Button } from '../..';
+import Button from '../../atoms/Button';
 
 export const PaginationList = styled.ul`
   display: flex;

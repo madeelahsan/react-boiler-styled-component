@@ -1,8 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import { css } from 'styled-components/macro';
+import style from 'styled-components/macro';
 import PropTypes from 'prop-types';
-import { UsePagination, PaginationDots as DOTS } from '../..';
+
+import UsePagination from '../../atoms/UsePagination';
+import DOTS from '../../atoms/PaginationDots';
 import { PaginationList, PaginationButton } from './Pagination.styles';
 
 const propTypes = {
@@ -11,10 +13,13 @@ const propTypes = {
   siblingCount: PropTypes.number,
   currentPage: PropTypes.number,
   pageSize: PropTypes.number,
+  customCss: PropTypes.string,
 };
 
 function Pagination(props) {
-  const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize } = props;
+  const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize, customCss } = props;
+
+  // const { isLoading, page, nbPages, handlePage, handleNextPage } = useGlobalContext();
 
   const paginationRange = UsePagination({
     currentPage,
@@ -29,6 +34,7 @@ function Pagination(props) {
 
   const onNext = () => {
     onPageChange(currentPage + 1);
+    // const nextPage = currentPage + 1;
   };
 
   const onPrevious = () => {
@@ -37,7 +43,7 @@ function Pagination(props) {
 
   const lastPage = paginationRange[paginationRange.length - 1];
   return (
-    <PaginationList>
+    <PaginationList css={customCss}>
       <li>
         <PaginationButton type="primary" shape="circle" onClick={onPrevious} disabled={currentPage === 1} size={28}>
           <i className="icon-chevron-left" />

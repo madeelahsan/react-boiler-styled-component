@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { PaginationDots as DOTS } from '../..';
+import DOTS from '../PaginationDots';
 
 const range = (start, end) => {
   const length = end - start + 1;

@@ -39,3 +39,9 @@ export const H5 = styled.h5`
   font-size: var(--h5-font-size);
   line-height: var(--h5-line-height);
 `;
+
+export const H6 = styled.h6`
+  ${HeadingColor}
+  font-size: var(--h6-font-size);
+  line-height: var(--h6-line-height);
+`;

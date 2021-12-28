@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { forwardRef, lazy, useState, Suspense } from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import styled from 'styled-components/macro';
 import { StyledFormGroup } from '../../../styles/helpers.styles';
 import { Error, InputHolder } from './Field.styles';
-import { Label, Input, InputIcon, FakeLabel, FakeInput } from '../..';
+
+const Label = lazy(() => import('../../atoms/Label'));
+const Input = lazy(() => import('../../atoms/Input'));
+const InputIcon = lazy(() => import('../../atoms/InputIcon'));
+const FakeLabel = lazy(() => import('../../atoms/FakeLabel'));
+const FakeInput = lazy(() => import('../../atoms/FakeInput'));
 
 const propTypes = {
-  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
   invalid: PropTypes.bool,
   rounded: PropTypes.bool,
   noMargin: PropTypes.bool,
@@ -20,115 +27,150 @@ const propTypes = {
   button: PropTypes.node,
   searchField: PropTypes.bool,
   onlyRead: PropTypes.bool,
+  rules: PropTypes.array,
+  labelIcon: PropTypes.node,
 };
 
 const defaultProps = {
   type: 'text',
 };
 
-const Field = ({
-  error,
-  name,
-  invalid,
-  label,
-  type,
-  prefix,
-  suffix,
-  rounded,
-  noMargin,
-  margin,
-  button,
-  searchField,
-  onlyRead,
-  ...props
-}) => {
-  const [isRevealPwd, setIsRevealPwd] = useState(false);
-  const inputProps = {
-    id: name,
-    name,
-    type,
-    invalid,
-    'aria-describedby': `${name}Error`,
-    ...props,
-  };
-  const renderInputFirst = type === 'checkbox' || type === 'radio';
-  return (
-    <StyledFormGroup
-      noMargin={noMargin}
-      css={`
-        margin-bottom: ${margin};
-      `}>
-      {renderInputFirst && label && (
-        <Label htmlFor={inputProps.id} $onlyRead={onlyRead} css="display: flex; align-items:center; margin-bottom:0;">
-          <Input {...inputProps} />
-          <FakeInput>{type === 'checkbox' && <i className="icon-check" />}</FakeInput>
-          <FakeLabel>{label}</FakeLabel>
-        </Label>
-      )}
+const Field = forwardRef(
+  (
+    {
+      rules,
+      error,
+      name,
+      invalid,
+      label,
+      type,
+      prefix,
+      suffix,
+      rounded,
+      noMargin,
+      margin,
+      button,
+      searchField,
+      onlyRead,
+      labelIcon,
+      ...props
+    },
+    ref,
+  ) => {
+    const [isRevealPwd, setIsRevealPwd] = useState(false);
+    const inputProps = {
+      id: props.id ?? name,
+      name,
+      type,
+      invalid,
+      'aria-describedby': `${name}Error`,
+      ...props,
+    };
+    const renderInputFirst = type === 'checkbox' || type === 'radio';
 
-      {renderInputFirst || (
-        <>
-          {label && <Label htmlFor={inputProps.id}>{label}</Label>}
-          <InputHolder $searchField={searchField}>
-            {/* input left icon */}
-            {prefix && (
-              <InputIcon
-                as={type === 'search' && 'button'}
-                type={type === 'search' ? 'button' : undefined}
-                $prefix={prefix}
-                $invalid={invalid}
-                css={type === 'search' && 'color: var(--primary)'}>
-                {prefix}
-              </InputIcon>
-            )}
-            {/* password field */}
-            {type === 'password' ? (
-              <>
-                <Input
-                  {...inputProps}
-                  $prefix
-                  $suffix
-                  $invalid={invalid}
-                  type={isRevealPwd ? 'text' : 'password'}
-                  $rounded={rounded}
-                  $button={button && true}
-                  autoComplete="on"
-                />
-                <InputIcon $suffix css="cursor: pointer" onClick={() => setIsRevealPwd(prevState => !prevState)}>
-                  {isRevealPwd ? <i className="icon-eye-open" /> : <i className="icon-eye-close" />}
-                </InputIcon>
-              </>
-            ) : (
-              <>
-                {/* any other input type */}
-                <Input
-                  {...inputProps}
-                  $prefix={prefix}
-                  $suffix={suffix}
-                  $invalid={invalid}
-                  $rounded={rounded}
-                  $button={button && true}
-                />
-                {/* input right icon */}
-                {suffix && (
-                  <InputIcon $suffix={suffix} $invalid={invalid}>
-                    {suffix}
+    return (
+      <Suspense fallback="loading...">
+        <StyledFormGroup
+          noMargin={noMargin}
+          css={`
+            margin-bottom: ${margin};
+          `}>
+          {renderInputFirst && label && (
+            <Label
+              htmlFor={inputProps.id}
+              labelIcon={labelIcon}
+              onlyRead={onlyRead}
+              css="display: flex !important; align-items:center; margin-bottom:0 !important;">
+              <Input
+                {...inputProps}
+                ref={ref}
+                $invalid={invalid || error}
+                checked={inputProps?.value}
+                // eslint-disable-next-line no-shadow
+                onChange={({ target: { name, checked } }) =>
+                  inputProps?.onChange?.({ target: { name, value: checked } })
+                }
+              />
+              <FakeInput>{type === 'checkbox' && <i className="icon-check" />}</FakeInput>
+              <FakeLabel required={rules?.filter(({ required }) => required).length}>{label}</FakeLabel>
+            </Label>
+          )}
+
+          {renderInputFirst || (
+            <>
+              {label && (
+                <Label
+                  labelIcon={labelIcon}
+                  htmlFor={inputProps.id}
+                  required={rules?.filter(({ required }) => required).length}>
+                  {label}
+                </Label>
+              )}
+              <InputHolder $searchField={searchField}>
+                {/* input left icon */}
+                {prefix && (
+                  <InputIcon
+                    as={type === 'search' && 'button'}
+                    type={type === 'search' ? 'button' : undefined}
+                    prefix={prefix}
+                    invalid={invalid || error}
+                    css={type === 'search' && 'color: var(--primary)'}>
+                    {prefix}
                   </InputIcon>
                 )}
-                {button && button}
-              </>
-            )}
-          </InputHolder>
-        </>
-      )}
-      {invalid && error && (
-        <Error id={`${name}Error`} role="alert">
-          {error}
-        </Error>
-      )}
-    </StyledFormGroup>
-  );
-};
+                {/* password field */}
+                {type === 'password' ? (
+                  <>
+                    <Input
+                      ref={ref}
+                      {...inputProps}
+                      $prefix
+                      $suffix
+                      $invalid={invalid || error}
+                      type={isRevealPwd ? 'text' : 'password'}
+                      $rounded={rounded}
+                      $button={button && true}
+                      autoComplete="on"
+                    />
+                    <InputIcon suffix css="cursor: pointer" onClick={() => setIsRevealPwd(prevState => !prevState)}>
+                      {isRevealPwd ? <i className="icon-eye-open" /> : <i className="icon-eye-close" />}
+                    </InputIcon>
+                  </>
+                ) : (
+                  <>
+                    {/* any other input type */}
+                    <Input
+                      ref={ref}
+                      {...inputProps}
+                      $prefix={prefix}
+                      $suffix={suffix}
+                      $invalid={invalid || error}
+                      $rounded={rounded}
+                      $button={button && true}
+                    />
+                    {/* input right icon */}
+                    {suffix && (
+                      <InputIcon suffix={suffix} invalid={invalid || error}>
+                        {suffix}
+                      </InputIcon>
+                    )}
+                    {button && button}
+                  </>
+                )}
+              </InputHolder>
+            </>
+          )}
+          {invalid ||
+            (error && (
+              <Error id={`${name}Error`} role="alert">
+                {error}
+              </Error>
+            ))}
+        </StyledFormGroup>
+      </Suspense>
+    );
+  },
+);
 
 Field.propTypes = propTypes;
 

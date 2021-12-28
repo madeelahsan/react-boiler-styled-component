@@ -2,29 +2,45 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TableRow, TableCell } from '../..';
+import Skeleton from 'react-loading-skeleton';
 import { StyledTable, TableHolder, TBody, TableScroll } from './Table.styles';
+import { TableRow } from '../../atoms/TableRow';
+import TableCell from '../../atoms/TableCell';
 
 const propTypes = {
   loading: PropTypes.bool,
-  columnNames: PropTypes.array.isRequired,
-  rowsData: PropTypes.array.isRequired,
+  columnNames: PropTypes.array,
+  rowsData: PropTypes.array,
   height: PropTypes.number,
   center: PropTypes.bool,
   sm: PropTypes.bool,
+  headSm: PropTypes.bool,
+  noPadding: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 // TODO:Remove nested ternary and add loading
-function Table({ loading, columnNames, rowsData, height, center, sm, ...props }) {
+function Table({
+  loading,
+  columnNames,
+  rowsData,
+  height,
+  center,
+  sm,
+  headSm,
+  onClick = () => {},
+  noPadding,
+  ...props
+}) {
   return (
     <>
-      <TableHolder>
+      <TableHolder noPadding={noPadding}>
         <TableScroll>
           <StyledTable {...props}>
             <thead>
               <TableRow>
                 {columnNames.map((item, index) => (
-                  <TableCell heading key={index} center={center}>
+                  <TableCell heading key={index} center={center} headSm={headSm}>
                     {item}
                   </TableCell>
                 ))}
@@ -32,12 +48,20 @@ function Table({ loading, columnNames, rowsData, height, center, sm, ...props })
             </thead>
             <TBody $height={height}>
               {loading ? (
-                <tr>
-                  <TableCell colSpan={columnNames?.length}>loading...</TableCell>
-                </tr>
+                Array(10)
+                  .fill()
+                  .map((item, i) => (
+                    <TableRow key={i}>
+                      {columnNames?.map(index => (
+                        <TableCell key={index}>
+                          <Skeleton width={100} height={15} />
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))
               ) : rowsData?.length ? (
                 rowsData?.map((row, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={index} onClick={() => onClick(row)}>
                     {row?.map((el, i) => (
                       <TableCell key={i} center={center} sm={sm}>
                         {el}

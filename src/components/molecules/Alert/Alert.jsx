@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AlertIcon } from '../..';
+
 import { StyledAlert, Message } from './Alert.styles';
+import AlertIcon from '../../atoms/AlertIcon';
 
 const propTypes = {
   type: PropTypes.string,

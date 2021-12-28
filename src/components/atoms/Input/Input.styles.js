@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components/macro';
 import { darken, cssVar } from 'polished';
-import { FakeInput, FakeLabel } from '../..';
+import FakeInput from '../FakeInput';
+import FakeLabel from '../FakeLabel';
+
+const StyledFakeLabel = styled(FakeLabel)``;
 
 export const styles = css`
   border: 2px solid ${({ $invalid }) => ($invalid ? 'var(--danger)' : 'var(--light)')};
@@ -126,7 +129,7 @@ export const styles = css`
       }
     }
     &:disabled {
-      + ${FakeInput}, ~ ${FakeLabel} {
+      + ${FakeInput}, ~ ${StyledFakeLabel} {
         opacity: 0.5;
       }
     }

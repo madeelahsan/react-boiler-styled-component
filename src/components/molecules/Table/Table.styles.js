@@ -2,8 +2,8 @@ import styled from 'styled-components/macro';
 
 export const TableHolder = styled.div`
   background: var(--light-secondary);
-  padding: 1.25rem 1.25rem 0.5625rem;
   border-radius: 0 0 24px 24px;
+  padding: ${({ noPadding }) => (noPadding ? '0' : '1.25rem 1.25rem 0.5625rem')};
 `;
 
 export const TableScroll = styled.div`
