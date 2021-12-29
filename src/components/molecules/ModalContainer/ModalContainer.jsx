@@ -2,11 +2,23 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../Modal';
 
+const propTypes = {
+  btnComponent: PropTypes.func,
+  content: PropTypes.func,
+  title: PropTypes.string,
+  xl: PropTypes.bool,
+  lg: PropTypes.bool,
+  sm: PropTypes.bool,
+  isClosable: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onModalClose: PropTypes.func,
+  imgPreview: PropTypes.bool,
+  width: PropTypes.number,
+};
 function ModalContainer({
   btnComponent,
   content,
   title,
-  xxl,
   xl,
   lg,
   sm,
@@ -14,6 +26,7 @@ function ModalContainer({
   onModalClose = () => {},
   isOpen,
   imgPreview,
+  width,
 }) {
   const [isVisible, setIsVisible] = useState(!!isOpen);
   const showModal = () => {
@@ -36,10 +49,10 @@ function ModalContainer({
         title={title}
         isOpen={isVisible}
         setIsOpen={setIsVisible}
-        xxl={xxl}
         xl={xl}
         lg={lg}
         sm={sm}
+        width={width}
         isClosable={isClosable}
         imgPreview={imgPreview}>
         {content({ onClose: handleCancel })}
@@ -48,18 +61,6 @@ function ModalContainer({
   );
 }
 
-ModalContainer.propTypes = {
-  btnComponent: PropTypes.func,
-  content: PropTypes.func,
-  title: PropTypes.string,
-  xl: PropTypes.bool,
-  lg: PropTypes.bool,
-  sm: PropTypes.bool,
-  xxl: PropTypes.bool,
-  isClosable: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  onModalClose: PropTypes.func,
-  imgPreview: PropTypes.bool,
-};
+ModalContainer.propTypes = propTypes;
 
 export default ModalContainer;

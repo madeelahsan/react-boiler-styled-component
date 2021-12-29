@@ -106,6 +106,14 @@ textarea.args = {
   rows: 3,
 };
 
+export const disabledInput = Template.bind({});
+disabledInput.args = {
+  type: 'text',
+  label: 'Disabled Input',
+  name: 'disabledInput',
+  disabled: true,
+};
+
 export const checkbox = Template.bind({});
 checkbox.args = {
   type: 'checkbox',

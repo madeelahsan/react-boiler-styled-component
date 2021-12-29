@@ -28,13 +28,13 @@ const Styles = css`
   color: var(--white);
   border-radius: 12px;
   font-size: var(--font-size-sm);
-  line-height: 1.125rem;
+  line-height: calc(var(--font-size-sm) + 0.3125rem);
   font-weight: bold;
 
   ${IconHolder} {
     margin-left: ${({ $suffix }) => $suffix && '12px'};
     margin-right: ${({ $prefix }) => $prefix && '12px'};
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     display: flex;
   }
 
@@ -261,7 +261,8 @@ const Styles = css`
     notification &&
     css`
       i {
-        font-size: 1.125rem;
+        font-size: var(--font-size-lg);
+        line-height: calc(var(--font-size-lg) + 0.3125rem);
         position: relative;
         &:after {
           content: '';

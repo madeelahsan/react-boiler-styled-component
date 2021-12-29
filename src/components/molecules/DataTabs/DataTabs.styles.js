@@ -44,7 +44,7 @@ export const TabBtn = styled.div`
 
 export const StyledTab = styled(Tab)`
   font-size: var(--font-size-sm);
-  line-height: 16px;
+  line-height: calc(var(--font-size-sm) + 0.3125rem);
   font-weight: 700;
   text-transform: capitalize;
   color: var(--text-color-gray);

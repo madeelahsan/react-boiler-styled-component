@@ -15,10 +15,12 @@ export const StyledParagraph = styled.p`
       if (xl) return 'var(--font-size-xl)';
       return 'var(--font-size-base)';
     }};
-    line-height: ${({ xs, xl }) => {
-      if (xs) return '0.9375rem';
-      if (xl) return '1.5625rem';
-      return '';
+    line-height: ${({ xs, sm, lg, xl }) => {
+      if (xs) return `calc(var(--font-size-xs) + 0.3125rem);`;
+      if (sm) return `calc(var(--font-size-sm) + 0.3125rem);`;
+      if (lg) return `calc(var(--font-size-lg) + 0.3125rem);`;
+      if (xl) return `calc(var(--font-size-xl) + 0.3125rem);`;
+      return 'calc(var(--font-size-base) + 0.3125rem);';
     }};
   }
 `;

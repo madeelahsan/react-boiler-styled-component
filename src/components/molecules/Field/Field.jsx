@@ -29,6 +29,7 @@ const propTypes = {
   onlyRead: PropTypes.bool,
   rules: PropTypes.array,
   labelIcon: PropTypes.node,
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -53,6 +54,7 @@ const Field = forwardRef(
       searchField,
       onlyRead,
       labelIcon,
+      disabled,
       ...props
     },
     ref,
@@ -84,6 +86,7 @@ const Field = forwardRef(
               <Input
                 {...inputProps}
                 ref={ref}
+                disabled={disabled}
                 $invalid={invalid || error}
                 checked={inputProps?.value}
                 // eslint-disable-next-line no-shadow
@@ -110,6 +113,7 @@ const Field = forwardRef(
                 {/* input left icon */}
                 {prefix && (
                   <InputIcon
+                    disabled={disabled}
                     as={type === 'search' && 'button'}
                     type={type === 'search' ? 'button' : undefined}
                     prefix={prefix}
@@ -129,10 +133,15 @@ const Field = forwardRef(
                       $invalid={invalid || error}
                       type={isRevealPwd ? 'text' : 'password'}
                       $rounded={rounded}
+                      disabled={disabled}
                       $button={button && true}
                       autoComplete="on"
                     />
-                    <InputIcon suffix css="cursor: pointer" onClick={() => setIsRevealPwd(prevState => !prevState)}>
+                    <InputIcon
+                      disabled={disabled}
+                      suffix
+                      css="cursor: pointer"
+                      onClick={() => setIsRevealPwd(prevState => !prevState)}>
                       {isRevealPwd ? <i className="icon-eye-open" /> : <i className="icon-eye-close" />}
                     </InputIcon>
                   </>
@@ -143,6 +152,7 @@ const Field = forwardRef(
                       ref={ref}
                       {...inputProps}
                       $prefix={prefix}
+                      disabled={disabled}
                       $suffix={suffix}
                       $invalid={invalid || error}
                       $rounded={rounded}
@@ -150,7 +160,7 @@ const Field = forwardRef(
                     />
                     {/* input right icon */}
                     {suffix && (
-                      <InputIcon suffix={suffix} invalid={invalid || error}>
+                      <InputIcon suffix={suffix} disabled={disabled} invalid={invalid || error}>
                         {suffix}
                       </InputIcon>
                     )}

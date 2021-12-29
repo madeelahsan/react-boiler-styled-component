@@ -11,7 +11,7 @@ export const StyledBtn = styled.label`
   max-width: 9.6875rem;
   min-height: 7rem;
   font-size: var(--font-size-xs);
-  line-height: 1.2;
+  line-height: calc(var(--font-size-xs) + 0.3125rem);
   color: var(--text-color-gray);
   cursor: pointer;
   border: 1px solid transparent;

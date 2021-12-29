@@ -48,13 +48,10 @@ export const DialogCentered = styled.div`
   margin: 0.5rem;
   max-width: 544px;
   min-height: calc(100% - 1rem);
-  ${({ $xxl }) =>
-    $xxl &&
+  ${({ $width }) =>
+    $width &&
     css`
-      max-width: 1500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      max-width: ${$width}px;
     `}
 
   ${({ $xl }) =>
@@ -107,6 +104,6 @@ export const ModalHeading = styled(Heading)`
   padding-right: 0.75rem;
   @media (max-width: 575px) {
     font-size: var(--font-size-base);
-    line-height: 1.25rem;
+    line-height: calc(var(--font-size-base) + 0.3125rem);
   }
 `;

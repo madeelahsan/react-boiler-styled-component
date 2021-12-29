@@ -11,6 +11,7 @@ export const StyledInputIcon = styled.span`
   background: none;
   border: none;
   padding: 0;
+  ${({ disabled }) => disabled && 'opacity: 0.5'};
   i {
     display: block;
   }

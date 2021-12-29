@@ -6,7 +6,7 @@ export const StyledAlert = styled.div`
   display: flex;
   align-items: center;
   font-size: var(--font-size-sm);
-  line-height: 1.25rem;
+  line-height: calc(var(--font-size-sm) + 0.3125rem);
   @media (min-width: 768px) {
     padding: 1rem 3.9375rem 1rem 1rem;
   }

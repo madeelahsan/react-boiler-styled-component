@@ -34,12 +34,12 @@ export const Title = styled.strong`
   ${({ sm }) =>
     sm
       ? css`
-          font-size: 0.75rem;
-          line-height: 1rem;
+          font-size: var(--font-size-xs);
+          line-height: calc(var(--font-size-xs) + 0.3125rem);
         `
       : css`
-          font-size: 0.875rem;
-          line-height: 1rem;
+          font-size: var(--font-size-sm);
+          line-height: calc(var(--font-size-sm) + 0.3125rem);
         `}
 `;
 
@@ -52,8 +52,8 @@ export const StyledListboxOption = styled(ListboxOption)`
   border-radius: 40px;
   margin-bottom: 3px;
   color: var(--primary-text-color);
-  font-size: 0.6875rem;
-  line-height: 0.75rem;
+  font-size: var(--font-size-xs);
+  line-height: calc(var(--font-size-xs) + 0.3125rem);
   min-width: max-content;
   &:hover,
   &:focus,

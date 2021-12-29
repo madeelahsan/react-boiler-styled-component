@@ -6,12 +6,12 @@ const HeadingColor = css`
 
 export const H1 = styled.h1`
   ${HeadingColor}
-  font-size: 1.5rem;
-  line-height: 1.875rem;
+  font-size: var(--font-size-xxl);
+  line-height: calc(var(--font-size-xxl) + 0.3125rem);
   margin-bottom: 0.625rem;
   @media (min-width: 768px) {
     font-size: var(--h1-font-size);
-    line-height: var(--h1-line-height);
+    line-height: calc(var(--h1-font-size) + 0.3125rem);
     margin-bottom: 1.25rem;
   }
 `;
@@ -19,29 +19,29 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   ${HeadingColor}
   font-size: var(--h2-font-size);
-  line-height: var(--h2-line-height);
+  line-height: calc(var(--h1-font-size) + 0.3125rem);
 `;
 
 export const H3 = styled.h3`
   ${HeadingColor}
   font-size: var(--h3-font-size);
-  line-height: var(--h3-line-height);
+  line-height: calc(var(--h1-font-size) + 0.3125rem);
 `;
 
 export const H4 = styled.h4`
   ${HeadingColor}
   font-size: var(--h4-font-size);
-  line-height: var(--h4-line-height);
+  line-height: calc(var(--h1-font-size) + 0.3125rem);
 `;
 
 export const H5 = styled.h5`
   ${HeadingColor}
   font-size: var(--h5-font-size);
-  line-height: var(--h5-line-height);
+  line-height: calc(var(--h1-font-size) + 0.3125rem);
 `;
 
 export const H6 = styled.h6`
   ${HeadingColor}
   font-size: var(--h6-font-size);
-  line-height: var(--h6-line-height);
+  line-height: calc(var(--h1-font-size) + 0.3125rem);
 `;

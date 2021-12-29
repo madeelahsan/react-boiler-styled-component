@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/macro';
 
 const styles = css`
   font-size: var(--font-size-sm);
-  line-height: 24px;
+  line-height: calc(var(--font-size-sm) + 0.3125rem);
   margin: 0;
   padding-left: 1.3rem;
   color: var(--text-color-gray);
@@ -25,7 +25,7 @@ const styles = css`
     bullets &&
     css`
       font-size: var(--font-size-xs);
-      line-height: 20px;
+      line-height: calc(var(--font-size-xs) + 0.3125rem);
 
       li {
         margin-bottom: 3px;

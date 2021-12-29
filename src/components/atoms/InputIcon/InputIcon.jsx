@@ -7,12 +7,13 @@ const propTypes = {
   prefix: PropTypes.oneOfType([PropTypes.bool, PropTypes.node, PropTypes.object]),
   invalid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   suffix: PropTypes.oneOfType([PropTypes.bool, PropTypes.node, PropTypes.object]),
+  disabled: PropTypes.bool,
 };
 
-function InputIcon({ prefix, invalid, suffix, children, ...props }) {
+function InputIcon({ prefix, invalid, suffix, children, disabled, ...props }) {
   return (
     <>
-      <StyledInputIcon $prefix={prefix} $invalid={invalid} $suffix={suffix} {...props}>
+      <StyledInputIcon $prefix={prefix} $invalid={invalid} $suffix={suffix} disabled={disabled} {...props}>
         {children}
       </StyledInputIcon>
     </>

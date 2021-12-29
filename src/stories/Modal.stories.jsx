@@ -52,6 +52,18 @@ smallModal.args = {
   sm: true,
 };
 
+export const customWidth = Template.bind({});
+customWidth.args = {
+  title: ' Custom Width Modal',
+  btnComponent: ({ onClick }) => (
+    <Button type="primary" onClick={onClick}>
+      Custom Width Modal
+    </Button>
+  ),
+  content: () => <span>component goes here</span>,
+  width: 1100,
+};
+
 export const unclosable = Template.bind({});
 unclosable.args = {
   title: 'Modal Title',

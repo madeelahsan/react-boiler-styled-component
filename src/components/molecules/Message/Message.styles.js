@@ -11,7 +11,7 @@ export const MessageHolder = styled.div`
   p {
     @media (max-width: 765px) {
       font-size: var(--font-size-base);
-      line-height: 20px;
+      line-height: calc(var(--font-size-base) + 0.3125rem);
     }
   }
 `;

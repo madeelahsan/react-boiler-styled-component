@@ -6,8 +6,8 @@ export const StyledTooltip = styled(ReactTooltip)`
     /* white-space: nowrap; */
     width: 200px !important;
     text-align: center !important;
-    font-size: 12px !important;
-    line-height: 15px !important;
+    font-size: var(--font-size-xs) !important;
+    line-height: calc(var(--font-size-xs) + 0.3125rem) !important;
     padding: 8px 10px !important;
   }
   &.type-success {

@@ -15,14 +15,14 @@ const propTypes = {
   children: PropTypes.node,
   lg: PropTypes.bool,
   sm: PropTypes.bool,
-  xxl: PropTypes.bool,
   xl: PropTypes.bool,
   isClosable: PropTypes.bool,
   imgPreview: PropTypes.bool,
   senti: PropTypes.bool,
+  width: PropTypes.number,
 };
 
-function Modal({ isOpen, setIsOpen = () => {}, title, children, sm, lg, xl, isClosable, imgPreview, senti, xxl }) {
+function Modal({ isOpen, setIsOpen = () => {}, title, children, sm, lg, xl, isClosable, imgPreview, senti, width }) {
   const AnimatedDialogOverlay = animated(StyledDialogOverlay);
   const AnimatedDialogContent = animated(StyledDialogContent);
   const transitions = useTransition(isOpen, {
@@ -39,7 +39,7 @@ function Modal({ isOpen, setIsOpen = () => {}, title, children, sm, lg, xl, isCl
         (styles, item) =>
           item && (
             <AnimatedDialogOverlay style={{ opacity: styles.opacity }} isOpen={isOpen} onDismiss={dismiss}>
-              <DialogCentered $xl={xl} $lg={lg} $sm={sm} $xxl={xxl} imgPreview={imgPreview}>
+              <DialogCentered $xl={xl} $lg={lg} $sm={sm} $width={width} imgPreview={imgPreview}>
                 <AnimatedDialogContent
                   aria-labelledby="dialog-title"
                   style={{

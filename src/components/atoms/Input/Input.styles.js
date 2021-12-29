@@ -69,6 +69,15 @@ export const styles = css`
         `}
     `}
 
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background: var(--light);
+      cursor: not-allowed;
+      border-color: #eee;
+      color: var(--light-gray);
+    `}
+
   &:focus {
     border-color: ${({ $invalid }) => !$invalid && `${darken(0.1, cssVar('--light'))}`};
   }
