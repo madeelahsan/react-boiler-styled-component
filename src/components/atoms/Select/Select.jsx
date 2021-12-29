@@ -23,7 +23,7 @@ const DropdownIndicator = props =>
   components.DropdownIndicator && (
     <components.DropdownIndicator {...props}>
       <InputIcon $suffix>
-        <i className="icon-chevron-down" />
+        <i className="material-icons-outlined">expand_more</i>
       </InputIcon>
     </components.DropdownIndicator>
   );

@@ -63,7 +63,7 @@ function Modal({ isOpen, setIsOpen = () => {}, title, children, sm, lg, xl, isCl
                         size={46}
                         css="flex-shrink:0;"
                         absolute={!title && true}>
-                        <i className="icon-close" />
+                        <i className="material-icons-outlined">close</i>
                       </CloseButton>
                     )}
                   </Flex>

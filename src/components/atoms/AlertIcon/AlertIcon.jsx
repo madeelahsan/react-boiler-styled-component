@@ -10,21 +10,21 @@ function AlertIcon({ $type }) {
   const iconType = () => {
     switch ($type) {
       case 'error':
-        return 'icon-error-circle';
+        return 'error_outline';
       case 'info-red':
-        return 'icon-info-circle';
+        return 'info';
       case 'warning':
-        return 'icon-warning';
+        return 'warning';
       case 'success':
-        return 'icon-check-circle';
+        return 'check_circle_outline';
       default:
-        return 'icon-info-circle';
+        return 'info';
     }
   };
   return (
     <>
       <StyledIcon $type={$type}>
-        <i className={iconType()} />
+        <span className="material-icons-outlined">{iconType()}</span>
       </StyledIcon>
     </>
   );

@@ -32,14 +32,14 @@ primary.args = {
 export const suffix = Template.bind({});
 suffix.args = {
   type: 'primary',
-  suffix: <i className="icon-camera" />,
+  suffix: <i className="material-icons-outlined">photo_camera</i>,
   children: 'suffix button',
 };
 
 export const prefix = Template.bind({});
 prefix.args = {
   type: 'primary',
-  prefix: <i className="icon-check" />,
+  prefix: <i className="material-icons-outlined">check_circle</i>,
   children: 'prefix button',
 };
 
@@ -74,7 +74,7 @@ extraSmall.args = {
 export const circleBtn = Template.bind({});
 circleBtn.args = {
   type: 'primary',
-  children: <i className="icon-bell" />,
+  children: <i className="material-icons-outlined">notifications</i>,
   shape: 'circle',
   size: 46,
 };

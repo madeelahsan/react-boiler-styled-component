@@ -46,7 +46,7 @@ function Pagination(props) {
     <PaginationList css={customCss}>
       <li>
         <PaginationButton type="primary" shape="circle" onClick={onPrevious} disabled={currentPage === 1} size={28}>
-          <i className="icon-chevron-left" />
+          <i className="material-icons-outlined">chevron_left</i>
         </PaginationButton>
       </li>
       {paginationRange.map((pageNumber, index) => {
@@ -75,7 +75,7 @@ function Pagination(props) {
       })}
       <li>
         <PaginationButton type="primary" shape="circle" onClick={onNext} disabled={currentPage === lastPage} size={28}>
-          <i className="icon-chevron-right" />
+          <i className="material-icons-outlined">chevron_right</i>
         </PaginationButton>
       </li>
     </PaginationList>

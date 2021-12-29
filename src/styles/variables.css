@@ -1,0 +1,97 @@
+
+/* css variable define in .css file because they gave error when using within CssVars(polished) */
+
+:root {
+  /* variables */
+  --gray: #999;
+  --light-gray: #b0b7c3;
+  --white: #fff;
+  --black: #000;
+  --light-blue: #39f;
+  --sky-blue: #04B4FF;
+  --purple: #6A65F1;
+  --dark-green: #2FAC8F;
+  --primary: #685cb6;
+  --light-primary: #e1ddfb;
+  --secondary: #6180f2;
+  --light: #eff2f8;
+  --light-secondary: #f6f8fa;
+  --success: #53b13e;
+  --danger: #ef466f;
+  --info: var(--secondary);
+  --warning: #f9c055;
+  --yellow: #fecf31;
+  --green: #47c07a;
+
+  --pink: #f7f1ff;
+
+  --primary-text-color: #0f2546;
+  --secondary-text-color: #160f46;
+
+  --text-color-gray: #6f7c97;
+
+  --primary-gradient: linear-gradient(178.19deg, #feeffe 0%, #edfdff 98.47%);
+
+  --base-font-sans-serif: 'Plus Jakarta Sans', 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'GeorFgia', serif;
+
+  /* Body */
+  --base-text-color: var(--primary-text-color);
+  --base-background-color: var(--white);
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-xxl: 1.5rem; /* 24px */
+  --line-height-base: 1.3;
+  --base-font-family: var(--base-font-sans-serif);
+
+  --paragraph-line-height: 1.5rem;
+
+  --base-min-width: 360px;
+
+  /*  Links */
+  --link-color: var(--primary);
+
+  /* Buttons  */
+  --btn-color: var(--white);
+  --primary-btn-background: var(--primary);
+  --secondary-btn-background: var(--light);
+  --btn-padding: 1.2rem;
+
+  /*  Forms */
+  --form-element-padding: .75rem 1.4375rem;
+  --form-element-padding-lg: .75rem 3.3125rem;
+  --form-element-border-color: var(--gray);
+  --form-element-focus-border-color: var(--black);
+  --placeholder-color: var(--gray);
+
+  /* Headings */
+  --h1-font-size: 2.5rem; /* 40px */
+  --h2-font-size: 1.5rem; /* 24px */
+  --h3-font-size: 1.25rem; /* 20px */
+  --h4-font-size: 1.125rem; /* 18px */
+  --h5-font-size: 1.0625rem; /* 17px */
+  --h6-font-size: 0.9375rem; /* 15px */
+
+  --headings-font-family: var(--base-font-serif);
+  --headings-color: var(--secondary-text-color);
+
+  --animation-speed: 0.3s;
+
+  /* z-index of components */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30; /* dropdown */
+  --z-35: 35; /* header */
+  --z-40: 40; /* side navbar */
+  --z-50: 50; /* modal */
+  --z-60: 60; /* Promotion Panel */
+  --z-90: 90; /* toast */
+  --z-100: 100; /* notifications */
+
+  --reach-listbox: 1;
+  --reach-menu-button: 1;
+}

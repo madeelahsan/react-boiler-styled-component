@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 import { darken, cssVar } from 'polished';
 import FakeInput from '../FakeInput';
-import FakeLabel from '../FakeLabel';
-
-const StyledFakeLabel = styled(FakeLabel)``;
 
 export const styles = css`
   border: 2px solid ${({ $invalid }) => ($invalid ? 'var(--danger)' : 'var(--light)')};
@@ -116,6 +113,19 @@ export const styles = css`
     }
   }
 
+  + ${FakeInput} {
+    transition: background var(--animation-speed) ease-in-out;
+    &:before,
+    .icon-check {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity var(--animation-speed) ease-in-out;
+    }
+  }
+
   &[type='checkbox'] {
     + ${FakeInput} {
       .icon-check {
@@ -138,20 +148,8 @@ export const styles = css`
       }
     }
     &:disabled {
-      + ${FakeInput}, ~ ${StyledFakeLabel} {
+      + ${FakeInput} {
         opacity: 0.5;
-      }
-    }
-    + ${FakeInput} {
-      transition: background var(--animation-speed) ease-in-out;
-      &:before,
-      .icon-check {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%);
-        transition: opacity var(--animation-speed) ease-in-out;
       }
     }
   }

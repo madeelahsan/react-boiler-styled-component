@@ -1,8 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components/macro';
 import { normalize } from 'polished';
-import Variables from './css/variables.css';
+import Variables from './variables.css';
 import Fonts from './Fonts';
-import Icons from './css/custom-icons.css';
 
 const Styling = css`
   /* theme css variables */
@@ -10,9 +9,6 @@ const Styling = css`
 
   /* Fonts = Plus Jakarta Sans */
   ${Fonts}
-
-  /* custom icons */
-  ${Icons}
 
   /* (normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css) */
   ${normalize()}

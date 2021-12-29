@@ -36,7 +36,7 @@ function Upload({
   label = '',
   name = 'Upload',
   uploadBtnText = '',
-  icon = <i className="icon-cloud-upload" />,
+  icon = <i className="material-icons-outlined">cloud_upload</i>,
   noMargin,
   error,
   value,
@@ -112,17 +112,22 @@ function Upload({
           <img src={imageSource} alt="ssd" />
           <IconsHolder>
             <ModalContainer
-              btnComponent={({ onClick }) => <Icon className="icon-eye-open" onClick={onClick} />}
+              btnComponent={({ onClick }) => (
+                <Icon className="material-icons-outlined" onClick={onClick}>
+                  visibility
+                </Icon>
+              )}
               content={() => <img src={imageSource} alt="preview" css="border-radius: 10px;" />}
               imgPreview
               lg
             />
             <Icon
-              className="icon-delete"
+              className="material-icons-outlined"
               onClick={() => {
                 clearState();
-              }}
-            />
+              }}>
+              visibility
+            </Icon>
           </IconsHolder>
         </ImgHolder>
       ) : allowCrop && cropRatio?.length > 1 ? (

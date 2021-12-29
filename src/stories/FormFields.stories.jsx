@@ -29,7 +29,7 @@ inputWithLeftIcon.args = {
   type: 'text',
   label: 'Input with Left Icon',
   name: 'name',
-  prefix: <i className="icon-email" />,
+  prefix: <i className="material-icons-outlined">email</i>,
 };
 
 export const inputWithRightIcon = Template.bind({});
@@ -37,7 +37,7 @@ inputWithRightIcon.args = {
   type: 'text',
   label: 'Input with Right Icon',
   name: 'name',
-  suffix: <i className="icon-email" />,
+  suffix: <i className="material-icons-outlined">email</i>,
 };
 
 export const inputWithLeftRightIcon = Template.bind({});
@@ -45,8 +45,8 @@ inputWithLeftRightIcon.args = {
   type: 'text',
   label: 'Input with left and Right Icon',
   name: 'name',
-  prefix: <i className="icon-email" />,
-  suffix: <i className="icon-email" />,
+  prefix: <i className="material-icons-outlined">email</i>,
+  suffix: <i className="material-icons-outlined">email</i>,
 };
 
 export const passwordField = Template.bind({});
@@ -54,7 +54,7 @@ passwordField.args = {
   type: 'password',
   label: 'Password Field',
   name: 'password',
-  prefix: <i className="icon-lock" />,
+  prefix: <i className="material-icons-outlined">lock</i>,
 };
 
 export const errorField = Template.bind({});
@@ -63,7 +63,7 @@ errorField.args = {
   label: 'Input with Error',
   name: 'error',
   error: 'Error Message',
-  prefix: <i className="icon-card" />,
+  prefix: <i className="material-icons-outlined">credit_card</i>,
 };
 
 export const searchField = Template.bind({});
@@ -73,7 +73,7 @@ searchField.args = {
   name: 'search',
   button: (
     <InputButton type="primary" size={40} shape="circle" unStyled>
-      <i className="icon-search" />
+      <i className="material-icons-outlined">search</i>
     </InputButton>
   ),
 };
@@ -93,7 +93,7 @@ fieldWithButton.args = {
   name: 'name',
   button: (
     <InputButton type="primary" size={40} shape="circle">
-      <i className="icon-file" />
+      <i className="material-icons-outlined">content_copy</i>
     </InputButton>
   ),
 };

@@ -18,7 +18,7 @@ const Template = ({ ...args }) => (
 export const uploadField = Template.bind({});
 uploadField.args = {
   label: 'Upload',
-  icon: <i className="icon-cloud-upload" />,
+  icon: <i className="material-icons-outlined">cloud_upload</i>,
   uploadBtnText: 'Upload photo',
   name: 'uploadBtn',
 };

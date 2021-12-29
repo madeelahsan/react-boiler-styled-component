@@ -32,7 +32,11 @@ function Dropdown({ title, options, setValue, filter, children, twoBtns, type = 
           {({ isExpanded }) => (
             <>
               <ReachListBoxButton $type={type} $size={size} $shape="circle">
-                {isExpanded ? <i className="icon-close" /> : <i className="icon-filter" />}
+                {isExpanded ? (
+                  <i className="material-icons-outlined">close</i>
+                ) : (
+                  <i className="material-icons-outlined">filter_alt</i>
+                )}
               </ReachListBoxButton>
               <StyledListboxPopover $calendar portal={false} $twoBtns={twoBtns}>
                 {title && <Title>{title}</Title>}
@@ -50,7 +54,7 @@ function Dropdown({ title, options, setValue, filter, children, twoBtns, type = 
       ) : (
         <StyledListboxInput onChange={value => setValue(value)}>
           <ReachListBoxButton $type={type} $size={size} $shape="circle">
-            <i className="icon-menu-vertical" />
+            <i className="material-icons-outlined">more_vert</i>
           </ReachListBoxButton>
           <StyledListboxPopover portal={false} $twoBtns={twoBtns}>
             {title && <Title sm>{title}</Title>}

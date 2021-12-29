@@ -94,7 +94,9 @@ const Field = forwardRef(
                   inputProps?.onChange?.({ target: { name, value: checked } })
                 }
               />
-              <FakeInput>{type === 'checkbox' && <i className="icon-check" />}</FakeInput>
+              <FakeInput>
+                {type === 'checkbox' && <i className="icon-check material-icons-outlined">check</i>}
+              </FakeInput>
               <FakeLabel required={rules?.filter(({ required }) => required).length}>{label}</FakeLabel>
             </Label>
           )}
@@ -142,7 +144,11 @@ const Field = forwardRef(
                       suffix
                       css="cursor: pointer"
                       onClick={() => setIsRevealPwd(prevState => !prevState)}>
-                      {isRevealPwd ? <i className="icon-eye-open" /> : <i className="icon-eye-close" />}
+                      {isRevealPwd ? (
+                        <i className="material-icons-outlined">visibility</i>
+                      ) : (
+                        <i className="material-icons-outlined">visibility_off</i>
+                      )}
                     </InputIcon>
                   </>
                 ) : (
