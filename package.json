@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "build-storybook",
     "lint:all": "yarn lint:css && yarn lint:js",
     "lint:css": "stylelint \"./src/**/*.js\"",
     "lint:js": "eslint --ext jsx,js src/",
     "lint:js:fix": "eslint --ext jsx,js --fix src/",
     "start": "react-scripts start",
-    "storybook": "start-storybook -p 6006 -s public"
+    "storybook": "start-storybook -p 6006"
   },
   "browserslist": {
     "production": [
